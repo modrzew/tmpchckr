@@ -59,13 +59,12 @@ void loop() {
     }
 
     // Light
-    int lightLevel = analogRead(1) / 10;
+    int lightLevel = analogRead(1);
+    lightLevel = map(lightLevel, 300, 1023, 0, 100);
     lcd.setCursor(2, 0);
     lcd.print(lightLevel);
     // Temperature
-    analogRead(2);
-    delay(100);
-    int temperature = (int)(round(3.3 * analogRead(2)));
+    int temperature = (int)(round(analogRead(0) * (5000/1024)));
     lcd.setCursor(8, 0);
     lcd.print(round(temperature/10));
     lcd.setCursor(11, 0);
